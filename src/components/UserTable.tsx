@@ -10,7 +10,7 @@ import { useUserStore } from "../stores/userStore";
 
 export const UserTable: React.FC = () => {
   const { data, removeUser } = useUserStore();
-  const users = data.step1;
+  const users = data.users;
   const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
 
   const columns: GridColDef[] = [
