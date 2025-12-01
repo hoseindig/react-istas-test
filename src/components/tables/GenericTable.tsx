@@ -3,11 +3,7 @@ import React from "react";
 import { DataGrid, GridToolbar, type GridColDef } from "@mui/x-data-grid";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { Paper } from "@mui/material";
-
-// درست: لوکال فارسی برای MUI core
 import { faIR as muiFaIR } from "@mui/material/locale";
-
-// درست: لوکال فارسی برای DataGrid (نسخه 7 و 8+)
 import { faIR as dataGridFaIR } from "@mui/x-data-grid/locales";
 
 interface GenericTableProps<T> {
@@ -23,44 +19,54 @@ export function GenericTable<T extends { id: string }>({
 }: GenericTableProps<T>) {
   const theme = useTheme();
 
-  const themeWithLocale = React.useMemo(
+  const rtlTheme = React.useMemo(
     () =>
       createTheme(
         {
-          ...theme,
           direction: "rtl",
-          palette: {
-            mode: theme.palette.mode, // حفظ تم تاریک/روشن
-          },
+          // typography: {
+          //   fontFamily: "IRANSans, Roboto, Arial, sans-serif",
+          // },
         },
-        muiFaIR, // ترجمه کامپوننت‌های اصلی MUI
-        dataGridFaIR // ترجمه کامل DataGrid (Toolbar, Pagination, Filters, ...)
+        muiFaIR,
+        dataGridFaIR
       ),
-    [theme]
+    []
   );
 
   return (
-    <Paper sx={{ height: 600, width: "100%", direction: "rtl" }}>
-      <ThemeProvider theme={themeWithLocale}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          checkboxSelection
-          disableRowSelectionOnClick
-          onRowSelectionModelChange={(ids) =>
-            onSelectionChange?.(ids as string[])
-          }
-          pageSizeOptions={[5, 10, 25, 50, 100]}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 10 } },
-          }}
-          slots={{ toolbar: GridToolbar }}
-          slotProps={{
-            toolbar: { printOptions: { disableToolbarButton: true } },
-          }}
-          // دیگر نیازی به localeText دستی نیست! dataGridFaIR همه چیز رو پوشش می‌ده
-        />
-      </ThemeProvider>
+    <Paper sx={{ height: 600, width: "100%" }}>
+      <div
+        dir="rtl"
+        style={{ direction: "rtl", width: "100%", height: "100%" }}
+      >
+        <ThemeProvider theme={rtlTheme}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            checkboxSelection
+            disableRowSelectionOnClick
+            onRowSelectionModelChange={(ids) =>
+              onSelectionChange?.(ids as string[])
+            }
+            pageSizeOptions={[5, 10, 25, 50, 100]}
+            initialState={{
+              pagination: { paginationModel: { pageSize: 10 } },
+            }}
+            slots={{ toolbar: GridToolbar }}
+            sx={{
+              "& .MuiDataGrid-withBorderColor": {
+                borderColor: "divider",
+              },
+              ".MuiDataGrid-cell": { justifyContent: "flex-end" },
+              ".MuiDataGrid-columnHeaderTitle": { fontWeight: "bold" },
+            }}
+            componentsProps={{
+              basePopper: { style: { direction: "rtl" } },
+            }}
+          />
+        </ThemeProvider>
+      </div>
     </Paper>
   );
 }

@@ -47,17 +47,17 @@ export const UserTablePage = () => {
       <Toolbar>
         <Button
           variant="contained"
-          startIcon={<ArrowBackIosIcon />}
-          onClick={() => navigate("/")}
-        >
-          قبلی
-        </Button>
-        <Button
-          variant="contained"
           startIcon={<ArrowForwardIosIcon />}
           onClick={() => navigate("/sellers")}
         >
           بعدی
+        </Button>
+        <Button
+          variant="contained"
+          startIcon={<ArrowBackIosIcon />}
+          onClick={() => navigate("/")}
+        >
+          قبلی
         </Button>
       </Toolbar>
     </>

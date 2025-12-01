@@ -49,17 +49,17 @@ export const SellerTablePage = () => {
       <Toolbar>
         <Button
           variant="contained"
-          startIcon={<ArrowBackIosIcon />}
-          onClick={() => navigate("/users")}
-        >
-          قبلی
-        </Button>
-        <Button
-          variant="contained"
           startIcon={<ArrowForwardIosIcon />}
           onClick={() => navigate("/admins")}
         >
           بعدی
+        </Button>
+        <Button
+          variant="contained"
+          startIcon={<ArrowBackIosIcon />}
+          onClick={() => navigate("/users")}
+        >
+          قبلی
         </Button>
       </Toolbar>
     </>
