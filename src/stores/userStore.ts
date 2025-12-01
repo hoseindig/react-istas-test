@@ -43,6 +43,8 @@ const initialData: StepData = {
       createdAt: new Date().toISOString(),
     },
   ],
+  step2: [],
+  step3: [],
 };
 
 export const useUserStore = create<UserStore>()(
