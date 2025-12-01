@@ -15,7 +15,7 @@ export const HomePage = () => {
       </Typography>
       <Typography variant="body1" paragraph>
         این یک نمونه کامل از React با Router، Zustand Store و MUI Data Grid است.
-        داده‌ها در step1 ذخیره می‌شوند و 8 ستون دارند.
+        داده‌ها در step 3 ذخیره می‌شوند و 8 ستون دارند.
       </Typography>
       <Button variant="contained" onClick={() => navigate("/users")}>
         مشاهده لیست کاربران

@@ -6,7 +6,7 @@ import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => (
-  <AppBar position="static">
+  <AppBar position="static" sx={{ direction: "rtl" }}>
     <Toolbar>
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         {/* مدیریت کاربران - Step 1 */}
