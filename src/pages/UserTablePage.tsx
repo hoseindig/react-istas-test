@@ -39,7 +39,7 @@ export const UserTablePage = () => {
               <Button
                 variant="outlined"
                 color="error"
-                onClick={() => removeUser(params.row.id)}
+                onClick={() => removeUser(params.row.id, "users")}
               >
                 حذف
               </Button>
