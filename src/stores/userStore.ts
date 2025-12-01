@@ -43,8 +43,32 @@ const initialData: StepData = {
       createdAt: new Date().toISOString(),
     },
   ],
-  admins: [],
-  sellers: [],
+  admins: [
+    {
+      id: uuidv4(),
+      firstName: "رضا",
+      lastName: "کریمی",
+      email: "reza@example.com",
+      age: 32,
+      phone: "09135556677",
+      city: "مشهد",
+      position: "مدیر پروژه",
+      createdAt: new Date().toISOString(),
+    },
+  ],
+  sellers: [
+    {
+      id: uuidv4(),
+      firstName: "علی",
+      lastName: "احمدی",
+      email: "ali@example.com",
+      age: 28,
+      phone: "09121234567",
+      city: "تهران",
+      position: "توسعه‌دهنده فرانت‌اند",
+      createdAt: new Date().toISOString(),
+    },
+  ],
 };
 
 export const useUserStore = create<UserStore>()(
