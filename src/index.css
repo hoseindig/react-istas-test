@@ -15,3 +15,7 @@
  * {
    font-family: "myFont" !important;
  }
+
+ body {
+   direction: rtl;
+ }
