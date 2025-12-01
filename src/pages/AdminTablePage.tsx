@@ -19,7 +19,7 @@ export const AdminTablePage = () => {
           {"مدیریت  ادمین ها       "}
         </Typography>{" "}
         <Button
-          variant="contained"
+          variant="outlined"
           startIcon={<AddIcon />}
           onClick={() => navigate("/admins/add")}
         >
@@ -36,7 +36,13 @@ export const AdminTablePage = () => {
             headerName: "عملیات",
             width: 130,
             renderCell: (params) => (
-              <button onClick={() => removeUser(params.row.id)}>حذف</button>
+              <Button
+                variant="outlined"
+                color="error"
+                onClick={() => removeUser(params.row.id)}
+              >
+                حذف
+              </Button>
             ),
           },
         ]}

@@ -36,7 +36,13 @@ export const UserTablePage = () => {
             headerName: "عملیات",
             width: 130,
             renderCell: (params) => (
-              <button onClick={() => removeUser(params.row.id)}>حذف</button>
+              <Button
+                variant="outlined"
+                color="error"
+                onClick={() => removeUser(params.row.id)}
+              >
+                حذف
+              </Button>
             ),
           },
         ]}
