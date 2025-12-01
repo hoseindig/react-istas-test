@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import type { UserStore, StepData } from "../types/user.types";
 
 const initialData: StepData = {
-  step1: [
+  users: [
     {
       id: uuidv4(),
       firstName: "علی",
@@ -43,8 +43,8 @@ const initialData: StepData = {
       createdAt: new Date().toISOString(),
     },
   ],
-  step2: [],
-  step3: [],
+  admins: [],
+  sellers: [],
 };
 
 export const useUserStore = create<UserStore>()(

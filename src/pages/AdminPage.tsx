@@ -8,10 +8,10 @@ import { Add as AddIcon } from "@mui/icons-material";
 import { UserTable } from "../components/UserTable";
 import { useUserStore } from "../stores/userStore";
 
-export const UsersPage = () => {
+export const AdminPage = () => {
   const navigate = useNavigate();
   const { data } = useUserStore();
-  const users = data.users;
+  const users = data.step1;
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -23,15 +23,13 @@ export const UsersPage = () => {
           mb: 3,
         }}
       >
-        <Typography variant="h4">
-          {"لیست کاربران  "}({users.length})
-        </Typography>
+        <Typography variant="h4">لیست مدیران ({users.length})</Typography>
         <Button
           variant="contained"
           startIcon={<AddIcon />}
-          onClick={() => navigate("/users/add")}
+          onClick={() => navigate("/admins/add")}
         >
-          افزودن کاربر
+          افزودن مدیر
         </Button>
       </Box>
       <UserTable />
