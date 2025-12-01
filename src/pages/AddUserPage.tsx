@@ -3,7 +3,7 @@
 import { Container, Typography, Paper } from "@mui/material";
 import { UserForm } from "../components/forms/UserForm";
 import { UserSchema } from "../types/user.types";
-import { useUserStore } from "../stores/userStore";
+import { useUserStore } from "../stores/appStore";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const AddUserPage = () => {

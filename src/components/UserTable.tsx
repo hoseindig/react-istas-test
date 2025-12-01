@@ -6,7 +6,7 @@ import React from "react";
 import { DataGrid, type GridColDef, type GridRowsProp } from "@mui/x-data-grid";
 import { Box, Button, Paper } from "@mui/material";
 import { Delete as DeleteIcon } from "@mui/icons-material";
-import { useUserStore } from "../stores/userStore";
+import { useUserStore } from "../stores/appStore";
 
 export const UserTable: React.FC = () => {
   const { data, removeUser } = useUserStore();

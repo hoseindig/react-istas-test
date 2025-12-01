@@ -6,7 +6,7 @@ import { Add as AddIcon } from "@mui/icons-material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "../stores/userStore";
+import { useUserStore } from "../stores/appStore";
 import { ConfirmDeleteDialog } from "../components/common/ConfirmDeleteDialog";
 import { useDeleteConfirm } from "../hooks/useDeleteConfirm";
 
@@ -86,28 +86,34 @@ export const EntityTablePage: React.FC<EntityTablePageProps> = ({
       />
 
       {/* فوتر با دکمه‌های قبلی/بعدی */}
-      {(prevRoute || nextRoute) && (
-        <Toolbar sx={{ justifyContent: "space-between", mt: 2 }}>
-          {prevRoute && (
-            <Button
-              variant="contained"
-              startIcon={<ArrowForwardIosIcon />}
-              onClick={() => navigate(prevRoute)}
-            >
-              قبلی
-            </Button>
-          )}
-          {nextRoute && (
-            <Button
-              variant="contained"
-              endIcon={<ArrowBackIosIcon />}
-              onClick={() => navigate(nextRoute)}
-            >
-              بعدی
-            </Button>
-          )}
-        </Toolbar>
-      )}
+      {/* فوتر با دکمه‌های قبلی/بعدی — ترتیب همیشه درست در RTL */}
+      <Toolbar sx={{ justifyContent: "space-between", mt: 2 }}>
+        {/* دکمه قبلی — همیشه در سمت چپ صفحه (اول) */}
+        {prevRoute ? (
+          <Button
+            variant="contained"
+            startIcon={<ArrowForwardIosIcon />} // درست: فلش چپ در سمت چپ
+            onClick={() => navigate(prevRoute)}
+          >
+            قبلی
+          </Button>
+        ) : (
+          <div />
+        )}
+
+        {/* دکمه بعدی — همیشه در سمت راست صفحه (آخر) */}
+        {nextRoute ? (
+          <Button
+            variant="contained"
+            endIcon={<ArrowBackIosIcon />} // درست: فلش راست در سمت راست
+            onClick={() => navigate(nextRoute)}
+          >
+            بعدی
+          </Button>
+        ) : (
+          <div />
+        )}
+      </Toolbar>
 
       {/* دیالوگ تأیید حذف */}
       <ConfirmDeleteDialog

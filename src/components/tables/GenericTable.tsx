@@ -44,7 +44,7 @@ export function GenericTable<T extends { id: string }>({
           <DataGrid
             rows={rows}
             columns={columns}
-            checkboxSelection
+            // checkboxSelection
             disableRowSelectionOnClick
             onRowSelectionModelChange={(ids) =>
               onSelectionChange?.(ids as string[])
