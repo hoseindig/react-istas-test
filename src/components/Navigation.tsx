@@ -9,7 +9,7 @@ export const Navigation = () => (
   <AppBar position="static">
     <Toolbar>
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        مدیریت کاربران
+        مدیریت کاربران - Step 1
       </Typography>
       <Button color="inherit" component={Link} to="/">
         خانه

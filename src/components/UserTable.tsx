@@ -9,18 +9,23 @@ import { Delete as DeleteIcon } from "@mui/icons-material";
 import { useUserStore } from "../stores/userStore";
 
 export const UserTable: React.FC = () => {
-  const { users, removeUser } = useUserStore();
+  const { data, removeUser } = useUserStore();
+  const users = data.step1;
   const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "نام", flex: 1, minWidth: 150 },
-    { field: "email", headerName: "ایمیل", flex: 1, minWidth: 200 },
-    { field: "age", headerName: "سن", width: 100 },
+    { field: "firstName", headerName: "نام", flex: 1, minWidth: 120 },
+    { field: "lastName", headerName: "نام خانوادگی", flex: 1, minWidth: 130 },
+    { field: "email", headerName: "ایمیل", flex: 1, minWidth: 180 },
+    { field: "age", headerName: "سن", width: 80 },
+    { field: "phone", headerName: "تلفن", flex: 1, minWidth: 130 },
+    { field: "city", headerName: "شهر", flex: 1, minWidth: 110 },
+    { field: "position", headerName: "موقعیت شغلی", flex: 1, minWidth: 150 },
     {
       field: "createdAt",
       headerName: "تاریخ ایجاد",
       flex: 1,
-      minWidth: 180,
+      minWidth: 130,
       valueFormatter: (value) => new Date(value).toLocaleDateString("fa-IR"),
     },
     {
@@ -34,7 +39,7 @@ export const UserTable: React.FC = () => {
           color="error"
           size="small"
           startIcon={<DeleteIcon />}
-          onClick={() => removeUser(params.row.id)}
+          onClick={() => removeUser(params.row.id, "step1")}
         >
           حذف
         </Button>
@@ -44,14 +49,18 @@ export const UserTable: React.FC = () => {
 
   const rows: GridRowsProp = users.map((user) => ({
     id: user.id,
-    name: user.name,
+    firstName: user.firstName,
+    lastName: user.lastName,
     email: user.email,
     age: user.age,
+    phone: user.phone,
+    city: user.city,
+    position: user.position,
     createdAt: user.createdAt,
   }));
 
   const handleDeleteSelected = () => {
-    selectedIds.forEach((id) => removeUser(id));
+    selectedIds.forEach((id) => removeUser(id, "step1"));
     setSelectedIds([]);
   };
 
@@ -69,7 +78,7 @@ export const UserTable: React.FC = () => {
         </Button>
       </Box>
 
-      <Paper sx={{ height: 500, width: "100%" }}>
+      <Paper sx={{ height: 600, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -78,7 +87,7 @@ export const UserTable: React.FC = () => {
           onRowSelectionModelChange={(newSelection) => {
             setSelectedIds(newSelection as string[]);
           }}
-          pageSizeOptions={[5, 10, 25]}
+          pageSizeOptions={[5, 10, 25, 50]}
           initialState={{
             pagination: { paginationModel: { pageSize: 10 } },
           }}

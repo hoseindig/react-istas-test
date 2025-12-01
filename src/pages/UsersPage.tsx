@@ -10,10 +10,11 @@ import { useUserStore } from "../stores/userStore";
 
 export const UsersPage = () => {
   const navigate = useNavigate();
-  const { users } = useUserStore();
+  const { data } = useUserStore();
+  const users = data.step1;
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="xl" sx={{ py: 4 }}>
       <Box
         sx={{
           display: "flex",
@@ -22,7 +23,9 @@ export const UsersPage = () => {
           mb: 3,
         }}
       >
-        <Typography variant="h4">لیست کاربران ({users.length})</Typography>
+        <Typography variant="h4">
+          لیست کاربران - Step 1 ({users.length})
+        </Typography>
         <Button
           variant="contained"
           startIcon={<AddIcon />}
