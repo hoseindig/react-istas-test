@@ -56,7 +56,7 @@ export function UserForm<T extends Record<string, any>>({
     <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
       <Grid container spacing={3}>
         {Object.keys(initialValues).map((key) => (
-          <Grid item xs={12} sm={6} key={key}>
+          <Grid item size={{ xs: 12, sm: 6 }} key={key}>
             <TextField
               fullWidth
               label={key}
@@ -68,7 +68,7 @@ export function UserForm<T extends Record<string, any>>({
           </Grid>
         ))}
 
-        <Grid item xs={12}>
+        <Grid item size={{ xs: 12, sm: 12 }}>
           <Box sx={{ display: "flex", gap: 2, justifyContent: "flex-end" }}>
             <Button type="submit" variant="contained">
               ذخیره
