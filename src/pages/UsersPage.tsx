@@ -1,0 +1,37 @@
+// ============================================
+// FILE: src/pages/UsersPage.tsx
+// ============================================
+
+import { Container, Typography, Box, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Add as AddIcon } from "@mui/icons-material";
+import { UserTable } from "../components/UserTable";
+import { useUserStore } from "../stores/userStore";
+
+export const UsersPage = () => {
+  const navigate = useNavigate();
+  const { users } = useUserStore();
+
+  return (
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 3,
+        }}
+      >
+        <Typography variant="h4">لیست کاربران ({users.length})</Typography>
+        <Button
+          variant="contained"
+          startIcon={<AddIcon />}
+          onClick={() => navigate("/users/add")}
+        >
+          افزودن کاربر
+        </Button>
+      </Box>
+      <UserTable />
+    </Container>
+  );
+};
